@@ -123,7 +123,11 @@
 	});
 
 	var synth = new window.ABCJS.synth.CreateSynth();
-	var myContext = new window.AudioContext();
+	var audioContext = window.AudioContext // Default
+    					|| window.webkitAudioContext
+    					|| false;
+   	if(!audioContext) alert("No AudioContext!");
+	var myContext = new audioContext();
 	var visualObj;
 	var timer;
 	var pre_eles = [];
