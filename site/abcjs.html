@@ -193,6 +193,7 @@
 	}
 
 	$.get(vars["file"], function(data){
+		alert(data);
 		visualObj = window.ABCJS.renderAbc("paper", data);
 		synth.init({
 		    audioContext: myContext,
