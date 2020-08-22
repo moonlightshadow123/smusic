@@ -1,7 +1,7 @@
 import re, io, os, json
 
-siteRoot = "http://mysmusic.s3-website.us-east-2.amazonaws.com/songs/"
-configFile = "data.json"
+siteRoot = "http://3.136.211.6:9010/songs/"
+configFile = "../data/data.json"
 filesDir = "../songs"
 
 class Song:

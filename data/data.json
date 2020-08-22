@@ -1,11 +1,11 @@
 [
     {
-        "url": "http://mysmusic.s3-website.us-east-2.amazonaws.com/songs/\u8309\u8389\u82b1.abc",
+        "url": "http://3.136.211.6:9010/songs/\u8309\u8389\u82b1.abc",
         "name": "\u8309\u8389\u82b1",
         "index": 1
     },
     {
-        "url": "http://mysmusic.s3-website.us-east-2.amazonaws.com/songs/\u96ea\u843d\u4e0b\u7684\u58f0\u97f3.abc",
+        "url": "http://3.136.211.6:9010/songs/\u96ea\u843d\u4e0b\u7684\u58f0\u97f3.abc",
         "name": "\u96ea\u843d\u4e0b\u7684\u58f0\u97f3",
         "index": 2
     }
