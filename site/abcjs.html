@@ -156,11 +156,11 @@
 	}
 
 	function conversion(value){
-		let minute = Math.floor(value/60);
-		minute = minute.toString().length == 1?('0'+minute):minute;
-		let second = Math.round(value%60);
-		second = second.toString().length == 1?('0'+second):second;
-		return `${minute}:${second}`;
+		var minute = Math.floor(value/60);
+		minute = minute.toString().length == 1?('0'+minute.toString()):minute.toString();
+		var second = Math.round(value%60);
+		second = second.toString().length == 1?('0'+second.toString()):second.toString;
+		return minute + ":" + second;
 	}
 
 	function stop(){
