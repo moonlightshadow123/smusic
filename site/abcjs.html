@@ -192,6 +192,7 @@
 	    return vars;
 	}
 
+	alert(vars["file"]);
 	$.get(vars["file"], function(data){
 		alert(data);
 		visualObj = window.ABCJS.renderAbc("paper", data);
