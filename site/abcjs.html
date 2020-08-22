@@ -163,7 +163,7 @@
 		var minute = Math.floor(value/60);
 		minute = minute.toString().length == 1?('0'+minute.toString()):minute.toString();
 		var second = Math.round(value%60);
-		second = second.toString().length == 1?('0'+second.toString()):second.toString;
+		second = second.toString().length == 1?('0'+second.toString()):second.toString();
 		return minute + ":" + second;
 	}
 
@@ -196,9 +196,7 @@
 	    return vars;
 	}
 
-	alert(vars["file"]);
 	$.get(vars["file"], function(data){
-		alert(data);
 		visualObj = window.ABCJS.renderAbc("paper", data);
 		synth.init({
 		    audioContext: myContext,
@@ -218,6 +216,7 @@
 		});
 		$("#stop").click(function(){
 			stop();
+			$start.html("00:00");
 			progress = 0;
 			move(0);
 		});
