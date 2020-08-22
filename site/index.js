@@ -3,7 +3,7 @@ var $input = $("#input");
 var $searchBtn = $("#searchBtn");
 var $randomBtn = $("#randomBtn");
 var $resetBtn = $("#resetBtn");
-var file_name = "data/data.json";
+var file_name = "../data/data.json";
 
 var $listDiv = $("#listContainer");
 var $list_temp = $(".list_temp").clone();
