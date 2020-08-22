@@ -198,8 +198,6 @@
 	    return vars;
 	}
 
-	var a;
-	var $frame;
 	$.get(vars["file"], function(data){
 		visualObj = window.ABCJS.renderAbc("paper", data);
 		var width = $("svg").attr("width"); var height = $("svg").attr("height");
