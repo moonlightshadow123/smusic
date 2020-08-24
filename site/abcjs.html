@@ -63,16 +63,19 @@
 		}
 		.control {
 			display: grid;
-            grid-template-columns:50px 50px auto 50px 50px;
+            grid-template-columns:50px 50px auto 50px 50px 30px;
             text-align: center;
             margin: 10px 30px;
+		}
+		input[type=checkbox] {
+    		transform: scale(1.5);
 		}
 		@media (max-width:1200px) {
 			body{
 				font-size: 170%;
 			}
 			.control{
-				grid-template-columns: 50px 50px auto 50px 50px;
+				grid-template-columns: 50px 50px auto 50px 50px 30px;
 				grid-gap: 0px;
 			}
 			.progress{
@@ -97,6 +100,7 @@
 	</div>
 	<div id="pause" class="icon"><i class="fas fa-pause"></i></div>
 	<div id="resume" class="icon"><i class="fas fa-step-forward"></i></div>
+	<div style="text-align: center;display:flex;align-items:center;"><input type="checkbox" id="repeat" name="repeat" value="repeat"></div>
 </div>
 
 <div id="paper" ></div>
@@ -108,6 +112,7 @@
 	var $start = $(".start");
 	var $end = $(".end");
 	var $paper = $("#paper");
+	var $repeat = $("#repeat");
 	var progress = 0;
 	$start.html("00:00");
 	$end.html("03:00");
@@ -159,6 +164,9 @@
 	function btcb(beatnum, totalBeats, totalTime){
 		move(beatnum/totalBeats);
 		$start.html(conversion(beatnum/totalBeats*totalTime/1000));
+		if(beatnum == totalBeats && $repeat.is(":checked")){
+			start();
+		}
 	}
 
 	function conversion(value){
