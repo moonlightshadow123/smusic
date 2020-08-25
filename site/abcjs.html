@@ -96,7 +96,7 @@
 		<div class="progress-bar">
 			<div class="now"></div>
 		</div>
-		<span class="end" style="float: right;padding: 5px"></span>
+		<span class="end" style="float: right;padding: 5px;"></span>
 	</div>
 	<div id="pause" class="icon"><i class="fas fa-pause"></i></div>
 	<div id="resume" class="icon"><i class="fas fa-step-forward"></i></div>
@@ -104,6 +104,10 @@
 </div>
 
 <div id="paper" ></div>
+<div id="window" style="position: absolute;display: none;background-color:#5577ee;color: #ffffff">
+	<span id="pitch"></span><br>
+	<span id="duration"></span>
+</div>
 
 </body>
 
@@ -113,6 +117,7 @@
 	var $end = $(".end");
 	var $paper = $("#paper");
 	var $repeat = $("#repeat");
+	var $window = $("#window");
 	var progress = 0;
 	$start.html("00:00");
 	$end.html("03:00");
@@ -205,15 +210,92 @@
 	    });
 	    return vars;
 	}
+	function calcPitch(ele){
+		var ps = [];
+		var keys = ["C","D","E","F","G","A","B"]
+		if(ele.hasOwnProperty("rest")){
+			return "Rest";
+		}
+		if(ele.hasOwnProperty("pitches")){
+			ele.pitches.forEach(function(p){
+				var acc = ""
+				if(p.hasOwnProperty("accidental")){
+					if(p.accidental == "flat") acc = "b";
+					if(p.accidental == "sharp") acc = "#";
+				}
+				var scale = 4 + Math.floor(p.pitch/7);
+				var key = p.pitch%7;
+				if(key<0) key += 7;
+				var res = keys[key] + acc + scale.toString();
+				ps.push(res);
+			});
+			return ps.join(",");
+		}
+	}
+	function calcDuration(ele){
+		var res;
+		var duration = ele.duration*10000;
+		if(duration % 10000 == 0){
+			res = duration/10000;
+			return res.toString()
+		}else if(duration % 5000 == 0){
+			res = duration/5000;
+			return res.toString()+"/2"
+		}else if(duration % 2500== 0){
+			res = duration/2500;
+			return res.toString() + "/4";
+		}else if(duration % 1250 == 0){
+			res = duration/1250;
+			return res.toString() + "/8";
+		}else if(duration % 625 == 0){
+			res = duration/625;
+			return res.toString() + "/16";
+		}
+		return "Null";
+	}
+	var $ele;
+	function clickListener(abcelem, tuneNumber, classes, analysis, drag, mouseEvent) {
+		if($ele) $ele.css("fill", "#000000");
+		var ele = abcelem;
+		console.log(abcelem);
+		console.log(tuneNumber);
+		console.log(classes);
+		console.log(analysis);
+		console.log(drag);
+		console.log(mouseEvent);
+		$ele = $(ele.abselem.elemset);
+		var rect = $ele[0].getBoundingClientRect();
+		if($window.css("display") == "none"){
+			$ele.css("fill", "#5577ee");
+			$window.css({"display":"", "top":rect.top+rect.height , "left":rect.left});
+			$window.find("#pitch").html(calcPitch(ele));
+			$window.find("#duration").html(calcDuration(ele));
+		}else{
+			$window.css("display","none");
+			$ele.css("fill", "#000000");
+		}
+		//$window.css({"display":"", "top":rect.top , "left":rect.left});
+	}
+	/*$("body").click(function(ev){
+		$window.css("display","none");
+	});*/
+	$("body")[0].addEventListener("click", function(){
+		//$window.css("display","none");
+		/*if($window.css("display") == "none"){
+			$window.css("display","");
+		}else{
+			$window.css("display","none");
+		}*/
+	}, true);
 
 	$.get(vars["file"], function(data){
-		visualObj = window.ABCJS.renderAbc("paper", data);
-		var width = $("svg").attr("width"); var height = $("svg").attr("height");
+		visualObj = window.ABCJS.renderAbc("paper", data, { clickListener: clickListener, responsive:"resize" });
+		/*var width = $("svg").attr("width"); var height = $("svg").attr("height");
 		
 		$("svg").attr("viewBox", "0 0 " + width.toString() + " " + height.toString()).attr("preserveAspectRatio", "xMinYMin slice");
 		$("svg").attr("width", window.innerWidth);
 		$("svg").attr("height", window.innerWidth*height/width);
-		$paper.css("height","auto");
+		$paper.css("height","auto");*/
 		synth.init({
 		    audioContext: myContext,
 		    visualObj: visualObj[0],
@@ -248,5 +330,6 @@
 			timer.start();
 		});
 	});
+
 </script>
 </html>
