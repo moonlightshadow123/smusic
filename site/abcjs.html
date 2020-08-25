@@ -267,7 +267,7 @@
 		var rect = $ele[0].getBoundingClientRect();
 		if($window.css("display") == "none"){
 			$ele.css("fill", "#5577ee");
-			$window.css({"display":"", "top":rect.top+rect.height , "left":rect.left});
+			$window.css({"display":"", "top":rect.top+rect.height+$(window).scrollTop() , "left":rect.left});
 			$window.find("#pitch").html(calcPitch(ele));
 			$window.find("#duration").html(calcDuration(ele));
 		}else{
