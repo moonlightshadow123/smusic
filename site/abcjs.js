@@ -4,6 +4,7 @@ var $end = $(".end");
 var $paper = $("#paper");
 var $repeat = $("#repeat");
 var $window = $("#window");
+var $ele;
 var progress = 0;
 $start.html("00:00");
 $end.html("03:00");
@@ -24,12 +25,14 @@ var synth = new window.ABCJS.synth.CreateSynth();
 var audioContext = window.AudioContext // Default
 					|| window.webkitAudioContext
 					|| false;
-	if(!audioContext) alert("No AudioContext!");
+if(!audioContext) alert("No AudioContext!");
 var myContext = new audioContext();
 var visualObj;
 var timer;
 var pre_eles = [];
 var vars = getUrlVars();
+var fileName = vars["file"].split("/").pop().split(".")[0];
+document.title = fileName;
 
 function clearColor(){
 	if(pre_eles){
@@ -139,16 +142,10 @@ function calcDuration(ele){
 	}
 	return "Null";
 }
-var $ele;
+
 function clickListener(abcelem, tuneNumber, classes, analysis, drag, mouseEvent) {
 	if($ele) $ele.css("fill", "#000000");
 	var ele = abcelem;
-	console.log(abcelem);
-	console.log(tuneNumber);
-	console.log(classes);
-	console.log(analysis);
-	console.log(drag);
-	console.log(mouseEvent);
 	$ele = $(ele.abselem.elemset);
 	var rect = $ele[0].getBoundingClientRect();
 	if($window.css("display") == "none"){
