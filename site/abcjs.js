@@ -37,7 +37,7 @@ document.title =  decodeURIComponent(fileName);
 function clearColor(){
 	if(pre_eles){
 		pre_eles.forEach(function(ele){
-			$(ele).css("fill", "");
+			$(ele).css("fill", "#000000");
 		});
 	}
 }
