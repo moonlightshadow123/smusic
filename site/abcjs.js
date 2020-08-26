@@ -162,17 +162,6 @@ function clickListener(abcelem, tuneNumber, classes, analysis, drag, mouseEvent)
 	}
 	//$window.css({"display":"", "top":rect.top , "left":rect.left});
 }
-/*$("body").click(function(ev){
-	$window.css("display","none");
-});*/
-$("body")[0].addEventListener("click", function(){
-	//$window.css("display","none");
-	/*if($window.css("display") == "none"){
-		$window.css("display","");
-	}else{
-		$window.css("display","none");
-	}*/
-}, true);
 
 $.get(vars["file"], function(data){
 	visualObj = window.ABCJS.renderAbc("paper", data, { clickListener: clickListener, responsive:"resize" });

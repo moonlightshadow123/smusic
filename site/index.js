@@ -5,7 +5,9 @@ var $randomBtn = $("#randomBtn");
 var $resetBtn = $("#resetBtn");
 var file_name = "../data/data.json";
 
-var $listDiv = $("#listContainer");
+//var $listDiv = $("#listContainer");
+var $listDiv = $("#listDiv");
+var $listContainer = $("#listContainer");
 var $list_temp = $(".list_temp").clone();
 $(".list_temp").remove();
 var thedata;
@@ -18,8 +20,13 @@ function doMasonry(){
 	msry = $listDiv.masonry({
         // options
         itemSelector: '.grid-item',
-        columnWidth: colWidth,
+        columnWidth: 240,
     });
+}
+
+function doSimpbar(){
+	simpleBar = new SimpleBar($listContainer[0]);
+	simpleBar.recalculate();
 }
 
 function genList(content){
@@ -86,5 +93,7 @@ $(function(){
 		console.log(data);
 		genList(data);
 		addListener();
+		doMasonry();
+		doSimpbar();
 	});
 });	
