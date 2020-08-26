@@ -91,9 +91,9 @@ function openAbc(file){
 $(function(){
 	$.get(file_name, function(data){
 		console.log(data);
+		doSimpbar();
 		genList(data);
 		addListener();
 		doMasonry();
-		doSimpbar();
 	});
 });	
