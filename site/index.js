@@ -76,7 +76,7 @@ function randomClick(){
 	var len = curData.length;
 	var idx = Math.floor(Math.random() * len);
 	var item = curData[idx]
-	genDetail(item[0]);
+	window.open(item.url, '_blank');
 }
 
 function searchClick(){
