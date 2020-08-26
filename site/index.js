@@ -13,6 +13,7 @@ $(".list_temp").remove();
 var thedata;
 var simpleBar;
 var msry;
+var height = $listContainer.css("height");
 
 var abc_url = "abcjs.html";
 
@@ -25,6 +26,7 @@ function doMasonry(){
 }
 
 function doSimpbar(){
+	$listContainer.css("height", height);
 	simpleBar = new SimpleBar($listContainer[0]);
 	simpleBar.recalculate();
 }
@@ -91,9 +93,8 @@ function openAbc(file){
 $(function(){
 	$.get(file_name, function(data){
 		console.log(data);
-		doSimpbar();
+		doMasonry();
 		genList(data);
 		addListener();
-		doMasonry();
 	});
 });	
