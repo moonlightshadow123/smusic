@@ -48,6 +48,28 @@ function genList(content){
 	if(msry!=null) {msry.masonry("addItems", $listDiv.children());msry.masonry();}
 }
 
+function search(string){
+	var res = [];
+	if(string.trim() == ""){ 
+		return;
+	}else{
+	thedata.forEach(function(item, idx){
+		if(item.name.includes(string))
+			res.push(item);
+		/*
+			for(var ele of item){
+				if(ele.includes(string)){
+					res.push(item);
+					break;
+				}
+			}
+		});*/
+	}
+	genList(res);
+	//doMansry();
+	//doSimpbar();
+}
+
 function randomClick(){
 	var len = curData.length;
 	var idx = Math.floor(Math.random() * len);
@@ -63,7 +85,7 @@ function searchClick(){
 }
 
 function resetClick(){
-	genList(sliceData);
+	genList(thedata);
 }
 
 function addListener(){
