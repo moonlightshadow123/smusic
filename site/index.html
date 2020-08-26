@@ -6,75 +6,12 @@
 	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	<script src="https://kit.fontawesome.com/dea24a676b.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css" />
-	<style type="text/css">
-		html,body{
-			height: 100%;
-			margin: 0;
-		}
-		.box {
-		  display: flex;
-		  flex-flow: column;
-		  height: 100%;
-		}
-		.content {
-  			flex: 1 1 auto;
-  			border-bottom: 1px solid gray;
-  		}
-		.header {
-		  flex: 0 1 50px;
-		  border-top: 1px solid gray;
-			text-align: center;
-		}
-		.header *{
-			vertical-align: middle;
-		}
-		.search span{
-			margin: 4px;
-			border: 1px solid #a3a3a3;
-			padding: 4px;
-		}
-		.btn{
-			background-color: #999999;
-			color: #ffffff;
-			box-shadow: 0 5px 10px -2px gray;
-		}
-		.btn:active{
-			background-color: blue;
-			color: #ffffff;
-		}
-		.v-center{
-			text-align: center;
-		    display:flex; 
-		    align-items:center;
-		}
-		.list_temp{
-			text-align: center;
-			width: 180px;
-			margin: 20px;
-			padding: 5px;
-			color: #ffffff;
-			border: 2px solid #ffffff;
-			box-shadow: 0 5px 10px -2px #ffffff;
-		}
-		input{
-			background: #ffffff;
-			outline: inherit;
-			border: none;
-		}
-		@media (max-width:1200px) {
-			body{
-				font-size: 200%;
-			}
-			.header{
-				flex: 0 1 100px;
-			}
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 
 <div class="box">
-<div id="searchContainer" class="header v-center" style="background-color: #ffffff">
+	<div id="searchContainer" class="header v-center" style="background-color: #ffffff">
 		<div style="width: 100%;" class="search vertical-align" >
 			<span class="smallWin" style="background-color: #ffffff"><input type="" name="" id="input"></span>
 			<span class="btn" id="searchBtn"><i class="fas fa-search"></i></span>
@@ -83,26 +20,15 @@
 		</div>
 	</div>
 
-
-<div id="listContainer" class="content" style="background-color: #449966">
-		<div id="listDiv">
-			<div class="grid-item list_temp">
-				<span class="idx">123</span>
-				<span class="name">abc</span>
+	<div id="listContainer" class="content" style="background-color: #449966">
+			<div id="listDiv">
+				<div class="grid-item list_temp">
+					<span class="idx">123</span>
+					<span class="name">abc</span>
+				</div>
 			</div>
-			<!--
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>
-			<div class="grid-item">abc</div>-->
 		</div>
 	</div>
-</div>
 <script type="text/javascript" src="index.js"></script>
 <script type="text/javascript">
 	var $listCont = $("#listContainer");

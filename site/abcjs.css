@@ -1,0 +1,76 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	text-align: center;
+	font-size: 3vw;
+}
+.icon{
+	margin: 10px 10px;
+	background-color: #999999;
+	padding: 8px;
+	color: #ffffff;
+	box-shadow: 0 5px 10px -2px gray;
+}
+.icon:active{
+	background-color: #3333ff;
+}
+.progress *{
+	display: inline-block;
+}
+.progress{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 15px 0px;
+	text-align: center;
+}
+.progress-bar{
+	position: relative;
+	height: 15px;
+	flex-grow: 1;
+	background-color: #eee;
+	vertical-align: 2px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.now{
+	position: absolute;
+	left: 0;
+	display: inline-block;
+	height: 15px;
+	width: 0%;
+	background: #31c27c;
+}
+.now::after{
+	content:'';
+	position: absolute;
+	left: 100%;
+	width: 3px;
+	height: 20px;
+	background-color: lightblue;
+}
+.control {
+	display: grid;
+    grid-template-columns:100px 100px auto 100px 100px 50px;
+    text-align: center;
+    margin: 10px 30px;
+}
+input[type=checkbox] {
+	transform: scale(1.5);
+}
+@media (max-width:1200px) {
+	.control{
+		grid-template-columns: 50px 50px auto 50px 50px 30px;
+		grid-gap: 0px;
+	}
+	.progress{
+		margin: 10px 0px;
+	}
+	.icon{
+		margin: 5px;
+	}
+}
