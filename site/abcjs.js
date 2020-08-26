@@ -32,7 +32,7 @@ var timer;
 var pre_eles = [];
 var vars = getUrlVars();
 var fileName = vars["file"].split("/").pop().split(".")[0];
-document.title = fileName;
+document.title =  decodeURIComponent(fileName);
 
 function clearColor(){
 	if(pre_eles){
