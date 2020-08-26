@@ -10,7 +10,8 @@ var $listDiv = $("#listDiv");
 var $listContainer = $("#listContainer");
 var $list_temp = $(".list_temp").clone();
 $(".list_temp").remove();
-var thedata;
+var theData;
+var curData;
 var simpleBar;
 var msry;
 var height = $listContainer.css("height");
@@ -34,10 +35,10 @@ function doSimpbar(){
 function genList(content){
 	//console.log(content);
 	//thedata = JSON.parse(content);
-	thedata = content;
+	curData = content;
 	if(msry!=null) msry.masonry("remove", $listDiv.children());
 	$listDiv.children().remove();
-	thedata.forEach(function(song, idx){
+	curData.forEach(function(song, idx){
 		var $list_item = $list_temp.clone();
 		$list_item.find(".idx").html(song["index"] + ". ");
 		$list_item.find(".name").html(song["name"]);
@@ -53,21 +54,22 @@ function search(string){
 	if(string.trim() == ""){ 
 		return;
 	}else{
-	thedata.forEach(function(item, idx){
-		if(item.name.includes(string))
-			res.push(item);
-		/*
-			for(var ele of item){
-				if(ele.includes(string)){
-					res.push(item);
-					break;
+		theData.forEach(function(item, idx){
+			if(item.name.includes(string))
+				res.push(item);
+			/*
+				for(var ele of item){
+					if(ele.includes(string)){
+						res.push(item);
+						break;
+					}
 				}
-			}
-		});*/
+			});*/
+		});
+		genList(res);
+		//doMansry();
+		//doSimpbar();
 	}
-	genList(res);
-	//doMansry();
-	//doSimpbar();
 }
 
 function randomClick(){
@@ -85,7 +87,7 @@ function searchClick(){
 }
 
 function resetClick(){
-	genList(thedata);
+	genList(theData);
 }
 
 function addListener(){
@@ -115,6 +117,7 @@ function openAbc(file){
 $(function(){
 	$.get(file_name, function(data){
 		console.log(data);
+		theData = data;
 		doSimpbar();
 		genList(data);
 		doMasonry();
