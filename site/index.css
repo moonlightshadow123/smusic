@@ -46,6 +46,7 @@ html,body{
 	color: #ffffff;
 	border: 2px solid #ffffff;
 	box-shadow: 0 5px 10px -2px #ffffff;
+	border-radius: 10px;
 }
 input{
 	background: #ffffff;
