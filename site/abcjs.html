@@ -29,6 +29,28 @@
 	<span id="pitch"></span><br>
 	<span id="duration"></span>
 </div>
+
+<style type="text/css">
+	#midi-download a{
+  		color: inherit; /* blue colors for links too */
+  		text-decoration: inherit; /* no underline */
+		font-size: small;
+		padding: 5px;
+		border: 1px solid gray;
+	}
+	#midi-download a:hover{
+		background-color: #3333ff;
+		color: #ffffff;
+		transition: 0.5s;
+	}
+</style>
+<div style="text-align: center;"><span id="midi-download">D</span></div>
 </body>
 <script type="text/javascript" src="abcjs.js"></script>
+<!--<script type="text/javascript" src="abcjs_midi_6.0.0-beta.16-min.js">
+</script-->
+<script type="text/javascript">
+			/*ABCJS.renderMidi("midi", thedata);
+			ABCJS.renderMidi("midi-download", thedata, { generateDownload: true, generateInline: false });*/
+</script>
 </html>

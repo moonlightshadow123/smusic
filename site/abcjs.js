@@ -21,7 +21,7 @@ $(".progress-bar").click(function(){
 	start();
 });
 
-var synth = new window.ABCJS.synth.CreateSynth();
+var synth = new ABCJS.synth.CreateSynth();
 var audioContext = window.AudioContext // Default
 					|| window.webkitAudioContext
 					|| false;
@@ -160,8 +160,22 @@ function clickListener(abcelem, tuneNumber, classes, analysis, drag, mouseEvent)
 	//$window.css({"display":"", "top":rect.top , "left":rect.left});
 }
 
+var thedata;
+function genMiDiDownload(){
+	var script = document.createElement('script');
+	script.onload = function () {
+	    //do stuff with the script
+	    window.ABCJS.renderMidi("midi-download", thedata, { generateDownload: true, generateInline: false });
+		//ABCJS.synth.getMidiFile(abc, {midiOutputType: 'encoded'})[0]
+	};
+	script.src = "abcjs_midi_6.0.0-beta.16-min.js";
+	document.head.appendChild(script);
+}
+
 $.get(vars["file"], function(data){
+	thedata = data;
 	visualObj = window.ABCJS.renderAbc("paper", data, { clickListener: clickListener, responsive:"resize" });
+	genMiDiDownload();
 	/*var width = $("svg").attr("width"); var height = $("svg").attr("height");
 	
 	$("svg").attr("viewBox", "0 0 " + width.toString() + " " + height.toString()).attr("preserveAspectRatio", "xMinYMin slice");
